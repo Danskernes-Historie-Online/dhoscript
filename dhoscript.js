@@ -68,7 +68,7 @@ function initWidget() {
     container.appendChild(button);
 
     // Find placeholder and insert widget
-    let placeholder = document.getElementById("dhoscript-placeholder"); 
+    let placeholder = document.getElementById("dhoscript-script"); 
     if (placeholder) {
         placeholder.appendChild(container);
         console.log("Widget tilføjet til placeholder");

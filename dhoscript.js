@@ -1,14 +1,14 @@
 function initWidget() {
     console.log("Widget initialiseres!");
 
-    if (document.getElementById("slaegtsbibliotek-search-widget")) {
+    if (document.getElementById("dhoscript")) {
         console.log("Widget eksisterer allerede, stopper initialisering.");
         return;
     }
 
     // Opret container
     let container = document.createElement("div");
-    container.id = "slaegtsbibliotek-search-widget";
+    container.id = "dhoscript";
     container.style.display = "flex";
     container.style.alignItems = "center"; // Holder elementer på linje
     container.style.gap = "10px"; // Afstand mellem elementer
@@ -22,15 +22,15 @@ function initWidget() {
 
     // Opret logo
     let logo = document.createElement("img");
-    logo.src = "https://slaegtsbibliotek.dk/dhosoeg/DHO_small.png";
-    logo.alt = "Slaegtsbibliotek.dk";
+    logo.src = "https://slaegtsbibliotek.dk/dhoscript/DHO_small.png";
+    logo.alt = "Danskernes Historie Online";
     logo.style.height = "30px"; 
     logo.style.flexShrink = "0"; // Sikrer, at logoet ikke krymper
 
     // Opret inputfelt
     let input = document.createElement("input");
     input.type = "text";
-    input.placeholder = "Søg i Slægtsbiblioteket";
+    input.placeholder = "Fritekstsøgning i millioner af sider";
     input.style.flex = "1"; // Lader inputfeltet fylde mest
     input.style.padding = "6px";
     input.style.border = "1px solid #ccc";
@@ -86,7 +86,7 @@ function initWidget() {
     container.appendChild(button);
 
     // Tilføj til siden
-    let placeholder = document.getElementById("slaegtsbibliotek-widget-placeholder");
+    let placeholder = document.getElementById("dhoscript");
     if (placeholder) {
         placeholder.appendChild(container);
         console.log("Widget tilføjet til placeholder");

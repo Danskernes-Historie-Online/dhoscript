@@ -16,7 +16,7 @@ function initWidget() {
     container.style.border = "2px solid #4a4a4a"; // Tydeligere ramme
     container.style.borderRadius = "8px"; // Blødere hjørner
     container.style.background = "#ffffff"; // Ren baggrund
-    container.style.maxWidth = "360px"; // Sikrer, at det ikke bliver for bredt
+    container.style.maxWidth = "500px"; // Sikrer, at det ikke bliver for bredt
     container.style.margin = "10px auto";
     container.style.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.1)"; // Let skygge
 

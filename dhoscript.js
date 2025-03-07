@@ -1,14 +1,16 @@
 function initWidget() {
     console.log("Widget initialiseres!");
 
-    if (document.getElementById("dhoscript")) {
+    // Prevent duplicate initialization
+    if (window.dhoscriptWidgetLoaded) {
         console.log("Widget eksisterer allerede, stopper initialisering.");
         return;
     }
+    window.dhoscriptWidgetLoaded = true; // Mark as initialized
 
-    // Opret container
+    // Opret container til widget
     let container = document.createElement("div");
-    container.id = "dhoscript";
+    container.id = "dhoscript-widget"; // Separate ID for the widget itself
     container.style.display = "flex";
     container.style.alignItems = "center"; // Holder elementer på linje
     container.style.gap = "10px"; // Afstand mellem elementer
@@ -22,56 +24,37 @@ function initWidget() {
 
     // Opret logo
     let logo = document.createElement("img");
-    logo.src = "https://slaegtsbibliotek.dk/dhoscript/DHO_small.png";
-    logo.alt = "Danskernes Historie Online";
+    logo.src = "https://slaegtsbibliotek.dk/dhosoeg/DHO_small.png";
+    logo.alt = "Slaegtsbibliotek.dk";
     logo.style.height = "30px"; 
     logo.style.flexShrink = "0"; // Sikrer, at logoet ikke krymper
 
     // Opret inputfelt
     let input = document.createElement("input");
     input.type = "text";
-    input.placeholder = "Fritekstsøgning i millioner af sider";
+    input.placeholder = "Søg i Slægtsbiblioteket";
     input.style.flex = "1"; // Lader inputfeltet fylde mest
     input.style.padding = "6px";
     input.style.border = "1px solid #ccc";
     input.style.borderRadius = "4px";
     input.style.fontSize = "14px";
 
-    // Opret søgeknap med SVG-lup
+    // Opret søgeknap
     let button = document.createElement("button");
-    button.innerHTML = `
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-    `;
+    button.innerText = "Søg";
     button.style.padding = "6px";
     button.style.border = "none";
     button.style.borderRadius = "4px";
-    button.style.background = "#4a4a4a"; // Mørkegrå baggrund
-    button.style.color = "#ffffff"; // Hvidt ikon
+    button.style.background = "#4a4a4a";
+    button.style.color = "#ffffff";
     button.style.cursor = "pointer";
-    button.style.display = "flex";
-    button.style.alignItems = "center";
-    button.style.justifyContent = "center";
-    button.style.width = "36px"; // Firkantet knap
-    button.style.height = "36px";
 
     function performSearch() {
         let query = encodeURIComponent(input.value.trim());
         if (query) {
-            let searchURL = "https://slaegtsbibliotek.dk/soeg-efter-boeger/fritekst?ss360Query=" + query;
-            
-            // Try to open in a new tab
-            let newTab = window.open(searchURL, "_blank");
-    
-            // If popup blocked (newTab is null), fallback to same window
-            if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
-                window.location.href = searchURL;
-            }
+            window.location.href = "https://slaegtsbibliotek.dk/soeg-efter-boeger/fritekst?ss360Query=" + query;
         }
     }
-    
 
     button.addEventListener("click", performSearch);
     input.addEventListener("keypress", function(event) {
@@ -80,13 +63,12 @@ function initWidget() {
         }
     });
 
-    // Tilføj elementerne til containeren i korrekt rækkefølge
     container.appendChild(logo);
     container.appendChild(input);
     container.appendChild(button);
 
-    // Tilføj til siden
-    let placeholder = document.getElementById("dhoscript");
+    // Find placeholder and insert widget
+    let placeholder = document.getElementById("dhoscript-placeholder"); 
     if (placeholder) {
         placeholder.appendChild(container);
         console.log("Widget tilføjet til placeholder");
@@ -96,7 +78,7 @@ function initWidget() {
     }
 }
 
-// **Eksekver straks, hvis DOM allerede er færdigindlæst**
+// **Prevent multiple executions**
 if (document.readyState === "complete" || document.readyState === "interactive") {
     console.log("DOM er allerede klar, initialiserer widget nu.");
     initWidget();

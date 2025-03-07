@@ -68,13 +68,22 @@ function initWidget() {
     container.appendChild(button);
 
     // Find placeholder and insert widget
-    let placeholder = document.getElementById("dhoscript-script"); 
+    let placeholder = document.getElementById("dhoscript-widget"); 
     if (placeholder) {
+        console.log("✅ Found #dhoscript-widget, inserting widget.");
         placeholder.appendChild(container);
-        console.log("Widget tilføjet til placeholder");
     } else {
-        document.body.appendChild(container);
-        console.log("Widget tilføjet til body");
+        console.warn("⚠️ Placeholder not found, retrying in 100ms...");
+        setTimeout(() => {
+            let retryPlaceholder = document.getElementById("dhoscript-widget");
+            if (retryPlaceholder) {
+                console.log("✅ Found placeholder on retry. Inserting now.");
+                retryPlaceholder.appendChild(container);
+            } else {
+                console.warn("❌ Still no placeholder found. Adding to body as fallback.");
+                document.body.appendChild(container);
+            }
+        }, 100);
     }
 }
 

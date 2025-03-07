@@ -25,14 +25,14 @@ function initWidget() {
     // Opret logo
     let logo = document.createElement("img");
     logo.src = "https://slaegtsbibliotek.dk/dhosoeg/DHO_small.png";
-    logo.alt = "Slaegtsbibliotek.dk";
+    logo.alt = "Danskernes Historie Online";
     logo.style.height = "30px"; 
     logo.style.flexShrink = "0"; // Sikrer, at logoet ikke krymper
 
     // Opret inputfelt
     let input = document.createElement("input");
     input.type = "text";
-    input.placeholder = "Søg i Slægtsbiblioteket";
+    input.placeholder = "Fritekstsøgning i millioner af sider";
     input.style.flex = "1"; // Lader inputfeltet fylde mest
     input.style.padding = "6px";
     input.style.border = "1px solid #ccc";

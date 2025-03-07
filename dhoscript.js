@@ -70,17 +70,17 @@ function initWidget() {
     // Find placeholder and insert widget
     let placeholder = document.getElementById("dhoscript-widget"); 
     if (placeholder) {
-        console.log("✅ Found #dhoscript-widget, inserting widget.");
+        // console.log("✅ Found #dhoscript-widget, inserting widget.");
         placeholder.appendChild(container);
     } else {
-        console.warn("⚠️ Placeholder not found, retrying in 100ms...");
+        // console.warn("⚠️ Placeholder not found, retrying in 100ms...");
         setTimeout(() => {
             let retryPlaceholder = document.getElementById("dhoscript-widget");
             if (retryPlaceholder) {
-                console.log("✅ Found placeholder on retry. Inserting now.");
+                // console.log("✅ Found placeholder on retry. Inserting now.");
                 retryPlaceholder.appendChild(container);
             } else {
-                console.warn("❌ Still no placeholder found. Adding to body as fallback.");
+                // console.warn("❌ Still no placeholder found. Adding to body as fallback.");
                 document.body.appendChild(container);
             }
         }, 100);
@@ -89,9 +89,9 @@ function initWidget() {
 
 // **Prevent multiple executions**
 if (document.readyState === "complete" || document.readyState === "interactive") {
-    console.log("DOM er allerede klar, initialiserer widget nu.");
+    // console.log("DOM er allerede klar, initialiserer widget nu.");
     initWidget();
 } else {
-    console.log("Venter på DOMContentLoaded...");
+    // console.log("Venter på DOMContentLoaded...");
     document.addEventListener("DOMContentLoaded", initWidget);
 }

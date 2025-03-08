@@ -26,7 +26,7 @@ function initWidget() {
     let logo = document.createElement("img");
     logo.src = "https://slaegtsbibliotek.dk/dhosoeg/DHO_small.png";
     logo.alt = "Danskernes Historie Online";
-    logo.style.height = "30px"; 
+    logo.style.height = "40px"; 
     logo.style.flexShrink = "0"; // Sikrer, at logoet ikke krymper
 
     // Opret inputfelt

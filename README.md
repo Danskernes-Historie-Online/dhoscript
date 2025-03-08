@@ -27,3 +27,6 @@ Det kan f.eks. se ud som følger:
 `?><script src="https://danskernes-historie-online.github.io/dhoscript/widget.js" async></script><?php`
 
 God fornøjelse!
+
+P.S. Det kommer i øvrigt til at se ud som følger:
+<script src="https://danskernes-historie-online.github.io/dhoscript/widget.js" async></script>

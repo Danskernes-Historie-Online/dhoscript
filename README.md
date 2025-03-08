@@ -1,6 +1,6 @@
-# dhoscript Søgescript til Danskernes Historie Online
-Vi har forsøgt at lave et stykke kode, der giver adgang til DHOs fritekstsøgning i bøger, og som vil kunne sættes ind i de fleste websider og virke derfra.
-Der er et input-felt og en søgeknap, der sender søgningen til Danskernes Historie Online
+# dhoscript - Søgescript til Danskernes Historie Online
+Vi har forsøgt at lave et stykke kode, der giver adgang til DHOs fritekstsøgning i DHO's mere end 50.000 bøger, og som vil kunne sættes ind i de fleste websider og virke derfra.
+Der er et input-felt og en søgeknap, der sender søgningen til Danskernes Historie Online.
 Kravet er, at web-sitet understøtter JavaScript.
 
 Man indsætter blot følgende JavaScript - typisk lige efter <body> eller lige før </body> (i starten eller slutningen af html-skriptet)
@@ -10,8 +10,10 @@ Så vil søgefeltet blive forsøgt vist i bunden af siden, som det f.eks. kan se
 
 Hvis den, der sætter det ind, vil have mere kontrol over, hvor på web-siden input-feltet vises, skal følgende linje placeres på det sted, hvor man vi have søgefeltet til at være.
 Men det kræver naturligvis viden om, hvor man kan sætte et sådant division-element, og selv da kan det drille.
+    
     `<div id="dhoscript-widget">`
-Koden, som bliver kaldt, vil forsøge at placere inputfeltet med tilhørende søgeknap der, hvor dette <div> element findes.
+
+Koden, som bliver kaldt, vil forsøge at placere inputfeltet med tilhørende søgeknap der, hvor dette `<div>` element findes.
 Der kan være mange grunde til, at browseren ikke vil fortolke dette rigtigt. I så fald anbefales det at nøjes med placeringen i bunden.
 
 De to kodefiler nedenfor indeholder den eller de linjer, der skal indsættes på den web-side hvorfra søgefunktionen skal kunne kaldes.
@@ -19,14 +21,13 @@ De to kodefiler nedenfor indeholder den eller de linjer, der skal indsættes på
     2. "Tilpasset placering.html". (Tilpasset placering, to kodelinjer)
 
 NB: Begge disse linjer er i html syntaks.
------------------------------------------
 Hvis de ønskes indsat i midten af et php-script, hvor der forventes php-syntaks, 
-skal denne midlertidigt ophæves og aktiveres igen bagefter ved hjælp af elementerne "?>" (slut php) og "<?php" (start php).
-Det kan f.eks. se ud som følger:
+skal denne midlertidigt ophæves og aktiveres igen bagefter ved hjælp af elementerne `?>` (slut php) og `<?php` (start php).
+Her er et eksempel, hvor man har sat `?>` før og `<?php` efter:
 
 `?><script src="https://danskernes-historie-online.github.io/dhoscript/widget.js" async></script><?php`
 
 God fornøjelse!
 
-P.S. Det kommer i øvrigt til at se ud som følger:
+P.S. Selve søgelinjen kommer i øvrigt til at se ud som følger:
 <script src="https://danskernes-historie-online.github.io/dhoscript/widget.js" async></script>

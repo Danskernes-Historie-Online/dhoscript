@@ -4,7 +4,8 @@ Der er et input-felt og en søgeknap, der sender søgningen til Danskernes Histo
 Kravet er, at web-sitet understøtter JavaScript.
 
 Man indsætter blot følgende JavaScript - typisk lige efter <body> eller lige før </body> (i starten eller slutningen af html-skriptet)
-`<script src="https://danskernes-historie-online.github.io/dhoscript/widget.js" async></script>`
+    
+    `<script src="https://danskernes-historie-online.github.io/dhoscript/widget.js" async></script>`
 
 Så vil søgefeltet blive forsøgt vist i bunden af siden, som det f.eks. kan ses på https://poulsteen.dk/links/
 
@@ -25,9 +26,8 @@ Hvis de ønskes indsat i midten af et php-script, hvor der forventes php-syntaks
 skal denne midlertidigt ophæves og aktiveres igen bagefter ved hjælp af elementerne `?>` (slut php) og `<?php` (start php).
 Her er et eksempel, hvor man har sat `?>` før og `<?php` efter:
 
-`?><script src="https://danskernes-historie-online.github.io/dhoscript/widget.js" async></script><?php`
+    `?><script src="https://danskernes-historie-online.github.io/dhoscript/widget.js" async></script><?php`
 
 God fornøjelse!
 
-P.S. Selve søgelinjen kommer i øvrigt til at se ud som følger:
 <script src="https://danskernes-historie-online.github.io/dhoscript/widget.js" async></script>

@@ -12,7 +12,7 @@ Så vil søgefeltet blive forsøgt vist i bunden af siden, som det f.eks. kan se
 Hvis den, der sætter det ind, vil have mere kontrol over, hvor på web-siden input-feltet vises, skal følgende linje placeres på det sted, hvor man vi have søgefeltet til at være.
 Men det kræver naturligvis viden om, hvor man kan sætte et sådant division-element, og selv da kan det drille.
     
-    `<div id="dhoscript-widget">`
+    `<div id="dhoscript-widget"></div>`
 
 Koden, som bliver kaldt, vil forsøge at placere inputfeltet med tilhørende søgeknap der, hvor dette `<div>` element findes.
 Der kan være mange grunde til, at browseren ikke vil fortolke dette rigtigt. I så fald anbefales det at nøjes med placeringen i bunden.

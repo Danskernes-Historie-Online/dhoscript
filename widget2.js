@@ -16,7 +16,7 @@
         // Styles
         const style = document.createElement("style");
         style.textContent = `
-            .widget-container {
+            .dho-widget-container {
                 all: initial;
                 display: flex;
                 align-items: center;
@@ -31,14 +31,14 @@
                 font-family: sans-serif;
                 pointer-events: auto;
             }
-            .widget-input {
+            .dho-widget-input {
                 flex: 1;
                 padding: 6px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 font-size: 14px;
             }
-            .widget-button {
+            .dho-widget-button {
                 padding: 6px;
                 border: none;
                 border-radius: 4px;
@@ -46,7 +46,7 @@
                 color: #ffffff;
                 cursor: pointer;
             }
-            .widget-logo {
+            .dho-widget-logo {
                 height: 40px;
                 flex-shrink: 0;
             }
@@ -54,12 +54,12 @@
 
         // Elementer
         const container = document.createElement("div");
-        container.className = "widget-container";
+        container.className = "dho-widget-container";
 
         const logo = document.createElement("img");
         logo.src = "https://slaegtsbibliotek.dk/dhosoeg/DHO_small.png";
         logo.alt = "Danskernes Historie Online";
-        logo.className = "widget-logo";
+        logo.className = "dho-widget-logo";
         logo.onerror = () => {
             console.warn("DHO Widget: Logo kunne ikke indlæses – skjuler billede.");
             logo.style.display = "none";
@@ -69,12 +69,12 @@
         input.type = "text";
         input.id = "dhoscript-input-id";
         input.placeholder = "Fritekstsøgning i millioner af sider";
-        input.className = "widget-input";
+        input.className = "dho-widget-input";
         input.autocomplete = "off";
 
         const button = document.createElement("button");
         button.innerText = "Søg";
-        button.className = "widget-button";
+        button.className = "dho-widget-button";
         button.title = "Søg i Danskernes Historie Online";
 
         function performSearch() {

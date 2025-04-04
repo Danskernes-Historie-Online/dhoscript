@@ -67,6 +67,7 @@
 
         const input = document.createElement("input");
         input.type = "text";
+        input.id = "dhoscript-input-id";
         input.placeholder = "Fritekstsøgning i millioner af sider";
         input.className = "widget-input";
         input.autocomplete = "off";

@@ -37,6 +37,7 @@
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 font-size: 14px;
+                width: 250px;
             }
             .dho-widget-button {
                 padding: 6px;

@@ -25,7 +25,7 @@
                 border: 2px solid #4a4a4a;
                 border-radius: 8px;
                 background: #ffffff;
-                max-width: 500px;
+                max-width: 800px;
                 margin: 10px auto;
                 box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
                 font-family: sans-serif;

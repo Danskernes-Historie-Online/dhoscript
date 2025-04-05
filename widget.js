@@ -38,6 +38,7 @@
                 box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
                 font-family: sans-serif;
                 pointer-events: auto;
+                width: fit-content;
             }
             .dho-widget-input {
                 flex: 1;

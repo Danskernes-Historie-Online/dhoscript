@@ -3,13 +3,13 @@ Vi har forsøgt at lave et stykke kode, der giver adgang til DHOs fritekstsøgni
 Der er et input-felt og en søgeknap, der sender søgningen til Danskernes Historie Online.
 En forudsætning er, at web-sitet understøtter JavaScript.
 
-Man indsætter blot følgende JavaScript - typisk i starten af html-skriptet (gerne lige efter <body>) eller i slutningen (gerne lige før </body>). 
+Man indsætter blot følgende JavaScript - typisk i starten af html-skriptet (gerne lige efter `<body>`) eller i slutningen (gerne lige før `</body>`). 
 
 `<script src="https://danskernes-historie-online.github.io/dhoscript/widget.js" async></script>`
 
 Så vil søgefeltet blive forsøgt vist i bunden af siden, som det f.eks. kan ses på https://poulsteen.dk/links/ og i bunden nedenfor.
 
-Hvis den, der sætter det ind, vil have mere kontrol over, hvor på web-siden input-feltet vises, kan følgende <div> element placeres på det sted, hvor man vi have søgefeltet til at være.
+Hvis den, der sætter det ind, vil have mere kontrol over, hvor på web-siden input-feltet vises, kan følgende `<div>` element placeres på det sted, hvor man vi have søgefeltet til at være.
 Men det kræver naturligvis viden om, hvordan man indsætter sådanne division-elementer, og selv for øvede kan det drille.
 
 `<div id="dhoscript-widget"></div>`

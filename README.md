@@ -15,8 +15,8 @@ Men det kræver naturligvis viden om, hvordan man indsætter sådanne division-e
 `<div id="dhoscript-widget"></div>`
 
 Koden, som bliver kaldt, vil forsøge at placere inputfeltet med tilhørende søgeknap der, hvor dette `<div>` element findes.
-Hvis de ønskes indsat i midten af et php-script, hvor der forventes php-syntaks, 
-skal denne midlertidigt ophæves og aktiveres igen bagefter ved hjælp af elementerne `?>` (slut php) og `<?php` (start php).
+Hvis det ønskes indsat i midten af et php-script, hvor der forventes php-syntaks, 
+skal denne php-syntaks midlertidigt ophæves og aktiveres igen bagefter ved hjælp af elementerne `?>` (slut php) og `<?php` (start php).
 Her er et eksempel, hvor man har sat `?>` før og `<?php` efter:
 
 `?><div id="dhoscript-widget"></div><?php`

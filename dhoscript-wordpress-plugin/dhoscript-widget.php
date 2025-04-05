@@ -7,7 +7,7 @@ Author: Danskernes Historie Online
 */
 
 function dho_output_widget_code() {
-    echo '<div id="dhoscript-widget"></div>';
+    // echo '<div id="dhoscript-widget"></div>';
     echo '<script src="https://danskernes-historie-online.github.io/dhoscript/widget2.js" async></script>';
 }
 

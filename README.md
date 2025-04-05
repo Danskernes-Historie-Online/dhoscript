@@ -4,7 +4,7 @@ Der er et input-felt og en søgeknap, der sender søgningen til Danskernes Histo
 En forudsætning er, at web-sitet understøtter JavaScript.
 
 Man indsætter blot følgende JavaScript - typisk i starten af html-skriptet (gerne lige efter <body>) eller i slutningen (gerne lige før </body>).
-NB: Anførselstegnene skal ikke med, kun det, der står inden for dem, så det begynder med <script> og slutter med </script>
+NB: Anførselstegnene skal ikke med, kun det, der står inden for dem, så det begynder med `<script ...` og slutter med `... async></script>`.
     
     `<script src="https://danskernes-historie-online.github.io/dhoscript/widget.js" async></script>`
 

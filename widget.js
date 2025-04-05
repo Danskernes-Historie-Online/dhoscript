@@ -1,97 +1,132 @@
-function initWidget() {
-    console.log("Widget initialiseres!");
+// This script is a self-contained widget that can be embedded in a webpage.
+// It uses Shadow DOM to encapsulate its styles and functionality, preventing conflicts with the main document.
+// The widget includes a logo, an input field for search queries, and a button to perform the search.
+// The search redirects to a specific URL (Danskenes Historie Online) with the query parameter included.
+// The script also handles cases where the logo fails to load by hiding it.
+// The widget is designed to be responsive and works well on various screen sizes.
+// It also includes a fallback mechanism to create the widget if the placeholder element is not found.
+// The script is structured to ensure that it only runs once, preventing multiple instances from being created.
+(function () {
+    if (window.dhoscriptWidgetLoaded) return;
+    window.dhoscriptWidgetLoaded = true;
 
-    // Prevent duplicate initialization
-    if (window.dhoscriptWidgetLoaded) {
-        console.log("Widget eksisterer allerede, stopper initialisering.");
-        return;
-    }
-    window.dhoscriptWidgetLoaded = true; // Mark as initialized
+    function initWidget(hostElement) {
+        console.log("DHO Widget: Initialiseres med Shadow DOM");
 
-    // Opret container til widget
-    let container = document.createElement("div");
-    container.id = "dhoscript-widget"; // Separate ID for the widget itself
-    container.style.display = "flex";
-    container.style.alignItems = "center"; // Holder elementer på linje
-    container.style.gap = "10px"; // Afstand mellem elementer
-    container.style.padding = "8px";
-    container.style.border = "2px solid #4a4a4a"; // Tydeligere ramme
-    container.style.borderRadius = "8px"; // Blødere hjørner
-    container.style.background = "#ffffff"; // Ren baggrund
-    container.style.maxWidth = "500px"; // Sikrer, at det ikke bliver for bredt
-    container.style.margin = "10px auto";
-    container.style.boxShadow = "2px 2px 5px rgba(0, 0, 0, 0.1)"; // Let skygge
-
-    // Opret logo
-    let logo = document.createElement("img");
-    logo.src = "https://slaegtsbibliotek.dk/dhosoeg/DHO_small.png";
-    logo.alt = "Danskernes Historie Online";
-    logo.style.height = "40px"; 
-    logo.style.flexShrink = "0"; // Sikrer, at logoet ikke krymper
-
-    // Opret inputfelt
-    let input = document.createElement("input");
-    input.type = "text";
-    input.placeholder = "Fritekstsøgning i millioner af sider";
-    input.style.flex = "1"; // Lader inputfeltet fylde mest
-    input.style.padding = "6px";
-    input.style.border = "1px solid #ccc";
-    input.style.borderRadius = "4px";
-    input.style.fontSize = "14px";
-
-    // Opret søgeknap
-    let button = document.createElement("button");
-    button.innerText = "Søg";
-    button.style.padding = "6px";
-    button.style.border = "none";
-    button.style.borderRadius = "4px";
-    button.style.background = "#4a4a4a";
-    button.style.color = "#ffffff";
-    button.style.cursor = "pointer";
-
-    function performSearch() {
-        let query = encodeURIComponent(input.value.trim());
-        if (query) {
-            window.location.href = "https://slaegtsbibliotek.dk/soeg-efter-boeger/fritekst?ss360Query=" + query;
+        // Beskyt mod dobbelt shadowRoot
+        if (hostElement.shadowRoot) {
+            console.warn("DHO Widget: Shadow root findes allerede.");
+            return;
         }
-    }
 
-    button.addEventListener("click", performSearch);
-    input.addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            performSearch();
-        }
-    });
+        const shadowRoot = hostElement.attachShadow({ mode: "open" });
 
-    container.appendChild(logo);
-    container.appendChild(input);
-    container.appendChild(button);
-
-    // Find placeholder and insert widget
-    let placeholder = document.getElementById("dhoscript-widget"); 
-    if (placeholder) {
-        // console.log("✅ Found #dhoscript-widget, inserting widget.");
-        placeholder.appendChild(container);
-    } else {
-        // console.warn("⚠️ Placeholder not found, retrying in 100ms...");
-        setTimeout(() => {
-            let retryPlaceholder = document.getElementById("dhoscript-widget");
-            if (retryPlaceholder) {
-                // console.log("✅ Found placeholder on retry. Inserting now.");
-                retryPlaceholder.appendChild(container);
-            } else {
-                // console.warn("❌ Still no placeholder found. Adding to body as fallback.");
-                document.body.appendChild(container);
+        // Styles
+        const style = document.createElement("style");
+        style.textContent = `
+            .dho-widget-container {
+                all: initial;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 8px;
+                border: 2px solid #4a4a4a;
+                border-radius: 8px;
+                background: #ffffff;
+                max-width: 800px;
+                margin: 10px auto;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+                font-family: sans-serif;
+                pointer-events: auto;
             }
-        }, 100);
-    }
-}
+            .dho-widget-input {
+                flex: 1;
+                padding: 6px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 14px;
+                width: 250px;
+            }
+            .dho-widget-button {
+                padding: 6px;
+                border: none;
+                border-radius: 4px;
+                background: #4a4a4a;
+                color: #ffffff;
+                cursor: pointer;
+            }
+            .dho-widget-logo {
+                height: 40px;
+                flex-shrink: 0;
+            }
+        `;
 
-// **Prevent multiple executions**
-if (document.readyState === "complete" || document.readyState === "interactive") {
-    // console.log("DOM er allerede klar, initialiserer widget nu.");
-    initWidget();
-} else {
-    // console.log("Venter på DOMContentLoaded...");
-    document.addEventListener("DOMContentLoaded", initWidget);
-}
+        // Elementer
+        const container = document.createElement("div");
+        container.className = "dho-widget-container";
+
+        const logo = document.createElement("img");
+        logo.src = "https://slaegtsbibliotek.dk/dhosoeg/DHO_small.png";
+        logo.alt = "Danskernes Historie Online";
+        logo.className = "dho-widget-logo";
+        logo.onerror = () => {
+            console.warn("DHO Widget: Logo kunne ikke indlæses – skjuler billede.");
+            logo.style.display = "none";
+        };
+
+        const input = document.createElement("input");
+        input.type = "text";
+        input.id = "dhoscript-input-id";
+        input.placeholder = "Fritekstsøgning i millioner af sider";
+        input.className = "dho-widget-input";
+        input.autocomplete = "off";
+
+        const button = document.createElement("button");
+        button.innerText = "Søg";
+        button.className = "dho-widget-button";
+        button.title = "Søg i Danskernes Historie Online";
+
+        function performSearch() {
+            const query = encodeURIComponent(input.value.trim());
+            if (query) {
+                window.location.href =
+                    "https://slaegtsbibliotek.dk/soeg-efter-boeger/fritekst?ss360Query=" + query;
+            }
+        }
+
+        button.addEventListener("click", performSearch);
+        input.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") performSearch();
+        });
+
+        container.appendChild(logo);
+        container.appendChild(input);
+        container.appendChild(button);
+
+        shadowRoot.appendChild(style);
+        shadowRoot.appendChild(container);
+    }
+
+    function waitForPlaceholderAndInit(attempt = 0) {
+        const hostElement = document.getElementById("dhoscript-widget");
+
+        if (hostElement) {
+            initWidget(hostElement);
+        } else if (attempt < 10) {
+            setTimeout(() => waitForPlaceholderAndInit(attempt + 1), 100);
+        } else {
+            console.warn("DHO Widget: Placeholder ikke fundet – opretter fallback nederst på siden.");
+            const fallback = document.createElement("div");
+            fallback.id = "dhoscript-widget";
+            document.body.appendChild(fallback);
+            initWidget(fallback);
+        }
+    }
+
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        waitForPlaceholderAndInit();
+    } else {
+        document.addEventListener("DOMContentLoaded", waitForPlaceholderAndInit);
+    }
+})();
+// End of widget.js

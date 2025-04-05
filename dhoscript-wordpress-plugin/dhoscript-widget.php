@@ -2,7 +2,7 @@
 /*
 Plugin Name: DHO Søgefelt Widget
 Description: Tilføjer et søgefelt til Danskernes Historie Online.
-Version: 1.0
+Version: 1.1
 Author: Danskernes Historie Online
 */
 

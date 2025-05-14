@@ -20,7 +20,7 @@
         }
 
         const shadowRoot = hostElement.attachShadow({ mode: "open" });
-        const openMode = hostElement.getAttribute("data-open") || "samepage";  // default fallback
+        const openMode = hostElement.getAttribute("data-open") || "newtab";  // default fallback
 
 
         // Styles
@@ -95,15 +95,15 @@
         
             const url = `https://slaegtsbibliotek.dk/soeg-efter-boeger/fritekst?ss360Query=${query}`;
         
-            if (openMode === "newtab") {
+            if (openMode === "samepage") {
+                // Default behavior: same tab
+                window.location.href = url;
+            } else {
                 const newTab = window.open(url, "_blank");
                 if (!newTab || newTab.closed || typeof newTab.closed === "undefined") {
                     // Popup blocked — fallback to same tab
                     window.location.href = url;
                 }
-            } else {
-                // Default behavior: same tab
-                window.location.href = url;
             }
         }        
 
